@@ -114,3 +114,31 @@ dialog::backdrop {
 .scroll-lock {
   overflow: hidden;
 }
+
+.controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control-row {
+  display: flex;
+}
+
+.control-button {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  margin: 5px;
+  border: none;
+  background-color: #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.control-button:active {
+  background-color: #aaa;
+}

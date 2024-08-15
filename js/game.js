@@ -67,16 +67,25 @@ let snake = [
   },
 ];
 
-document.addEventListener("keydown", direction);
-
 let dir = "";
 
 function direction(event) {
-  if (event.keyCode == 37 && dir != "right") dir = "left";
-  else if (event.keyCode == 38 && dir != "down") dir = "up";
-  else if (event.keyCode == 39 && dir != "left") dir = "right";
-  else if (event.keyCode == 40 && dir != "up") dir = "down";
+  // Обрабатываем как события клавиатуры, так и события кнопок
+  let keyCode = event.keyCode || event.target.dataset.keyCode;
+  
+  if (keyCode == 37 && dir != "right") dir = "left";   // ArrowLeft
+  else if (keyCode == 38 && dir != "down") dir = "up"; // ArrowUp
+  else if (keyCode == 39 && dir != "left") dir = "right"; // ArrowRight
+  else if (keyCode == 40 && dir != "up") dir = "down"; // ArrowDown
 }
+
+document.addEventListener("keydown", direction);
+
+// Обработчики событий для виртуальных кнопок
+document.getElementById('up').addEventListener('click', () => direction({ keyCode: 38 }));
+document.getElementById('down').addEventListener('click', () => direction({ keyCode: 40 }));
+document.getElementById('left').addEventListener('click', () => direction({ keyCode: 37 }));
+document.getElementById('right').addEventListener('click', () => direction({ keyCode: 39 }));
 
 function eatTail(head, arr) {
   for (let i = 0; i < arr.length; i++) {
