@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 const ground = new Image();
 ground.src = "img/ground.png";
 
-const foodImages = ["img/food-1.png", "img/food-2.png", "img/food-3.png"];
+const foodImages = ["img/food-1.png", "img/food-2.png", "img/food-3.png", "img/food-4.png", "img/food-5.png"];
 
 const snakeHead = new Image();
 snakeHead.src = "img/head.png";
@@ -23,7 +23,6 @@ function updateScore() {
   document.getElementById("score").textContent = score;
 }
 
-let cadrs = 0;
 
 let food = {
   x: Math.floor(Math.random() * 18 + 1) * box,
@@ -67,16 +66,23 @@ let snake = [
   },
 ];
 
-document.addEventListener("keydown", direction);
-
 let dir = "";
 
 function direction(event) {
-  if (event.keyCode == 37 && dir != "right") dir = "left";
-  else if (event.keyCode == 38 && dir != "down") dir = "up";
-  else if (event.keyCode == 39 && dir != "left") dir = "right";
-  else if (event.keyCode == 40 && dir != "up") dir = "down";
+  let keyCode = event.keyCode || event.target.dataset.keyCode;
+  
+  if (keyCode == 37 && dir != "right") dir = "left";   
+  else if (keyCode == 38 && dir != "down") dir = "up"; 
+  else if (keyCode == 39 && dir != "left") dir = "right"; 
+  else if (keyCode == 40 && dir != "up") dir = "down"; 
 }
+
+document.addEventListener("keydown", direction);
+
+document.getElementById('up').addEventListener('click', () => direction({ keyCode: 38 }));
+document.getElementById('down').addEventListener('click', () => direction({ keyCode: 40 }));
+document.getElementById('left').addEventListener('click', () => direction({ keyCode: 37 }));
+document.getElementById('right').addEventListener('click', () => direction({ keyCode: 39 }));
 
 function eatTail(head, arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -160,7 +166,6 @@ function drawGame() {
 
   snake.unshift(newHead);
 
-  cadrs++;
 }
 
 let game = setInterval(drawGame, 200);

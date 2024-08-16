@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
     <title>Corgi Snack</title>
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/variables.css" />
@@ -13,7 +18,7 @@
   <body class="page">
     <header class="header">
       <h1 class="title">
-        <img src="/img/logo.png" alt="Corgi`s snake" class="logo-image" />
+        <img src="img/logo.png" alt="Corgi`s snake" class="logo-image" />
       </h1>
       <h2 class="subtitle">Ваш счёт: <span id="score">0</span></h2>
     </header>
@@ -27,6 +32,16 @@
         <button class="closeDialogBtn button-black" type="button">Да!</button>
       </div>
     </dialog>
+
+    <div id="controls" class="controls">
+      <button id="up" class="control-button">↑</button>
+      <div class="control-row">
+        <button id="left" class="control-button">←</button>
+        <button id="down" class="control-button">↓</button>
+        <button id="right" class="control-button">→</button>
+      </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/game.js"></script>
   </body>
