@@ -68,13 +68,26 @@ let snake = [
 
 let dir = "";
 
+let directionChanged = false;
+
 function direction(event) {
   let keyCode = event.keyCode || event.target.dataset.keyCode;
   
-  if (keyCode == 37 && dir != "right") dir = "left";   
-  else if (keyCode == 38 && dir != "down") dir = "up"; 
-  else if (keyCode == 39 && dir != "left") dir = "right"; 
-  else if (keyCode == 40 && dir != "up") dir = "down"; 
+  if (!directionChanged) {
+    if (keyCode == 37 && dir != "right") {
+      dir = "left";
+      directionChanged = true;
+    } else if (keyCode == 38 && dir != "down") {
+      dir = "up";
+      directionChanged = true;
+    } else if (keyCode == 39 && dir != "left") {
+      dir = "right";
+      directionChanged = true;
+    } else if (keyCode == 40 && dir != "up") {
+      dir = "down";
+      directionChanged = true;
+    }
+  }
 }
 
 document.addEventListener("keydown", direction);
@@ -166,6 +179,7 @@ function drawGame() {
 
   snake.unshift(newHead);
 
+  directionChanged = false;
 }
 
 let game = setInterval(drawGame, 200);
